@@ -2,7 +2,7 @@
 # Version 4.1.1
 
 app:
-  image: 985616604639.dkr.ecr.us-west-2.amazonaws.com/expresscommerce/magento2-nginx:latest
+  image: 985616604639.dkr.ecr.us-west-2.amazonaws.com/expresscommerce:magento2-nginx-2
   links:
     - phpfpm
     - db
@@ -19,7 +19,7 @@ appdata:
 #    - ./www/app:/srv/www/app
 
 phpfpm:
-  image: 985616604639.dkr.ecr.us-west-2.amazonaws.com/expresscommerce/magento2-php:latest
+  image: 985616604639.dkr.ecr.us-west-2.amazonaws.com/expresscommerce:magento2-php-3
   links:
     - db
   volumes_from:
@@ -43,7 +43,7 @@ dbdata:
     - /var/lib/mysql
 
 setup:
-  image: 985616604639.dkr.ecr.us-west-2.amazonaws.com/expresscommerce/magento2-php:latest
+  image: 985616604639.dkr.ecr.us-west-2.amazonaws.com/expresscommerce:magento2-php-3
   command: /usr/local/bin/mage-setup
   links:
     - db
