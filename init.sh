@@ -2,7 +2,9 @@
 
 set -x
 
-aws ecr get-login --region us-west-2
+#renew aws ecr authorization token
+rm /home/ec2-user/.docker/config.json
+$(aws ecr get-login --region us-west-2)
 
 #stop and remove all containers
 docker stop $(docker ps -a -q)
